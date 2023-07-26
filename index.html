@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>Language</title>
+
+<style>
+	*{ font-size:50px;}
+	body{background-color:lightblue;}
+</style>
+
+<script>
+function show()
+{
+	event.preventDefault();
+	let name=document.getElementById("name");
+	let java=document.getElementById("java");
+	let js=document.getElementById("js");
+	let python=document.getElementById("python");
+	let ans=document.getElementById("ans");
+
+	if(name.value=="")
+	{
+		alert("Please enter some value.");
+		ans.innerHTML="";
+		name.focus();
+		return;
+	}
+	else if(name.value.trim()=="")
+	{
+		alert("Name cannot be spaces");
+		ans.innerHTML="";
+		name.value="";
+		name.focus();
+		return;
+	}
+	else if (! name.value.match(/^[A-Za-z ]+$/))
+	{
+
+		alert("Name can be only alphabets");
+		ans.innerHTML="";
+		name.value="";
+		name.focus();
+		return;
+	}
+
+	let languages="";
+	if(java.checked)      languages=languages+"Java";
+	if(js.checked)      languages=languages+"JavaScript";
+	if(python.checked)      languages=languages+"Python";
+
+	
+	let msg="Name=" +name.value + "Languages=" +languages;
+	ans.innerHTML=msg;
+}
+</script>
+</head>
+
+
+<body>
+<center>
+<h1> Languages You Know </h1>
+<form onsubmit="show()">
+<input type="text" placeholder="Enter Name" id="name"/> 
+<br><br>
+
+<input type="checkbox" id="java" checked=true/> Java
+<input type="checkbox" id="js"/> JS
+<input type="checkbox" id="python"/> Python
+<br><br>
+<input type="submit"/>
+
+</form>
+
+<h1 id="ans"/>
+</center>
+</body>
+</html>
